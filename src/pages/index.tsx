@@ -1,10 +1,10 @@
 import { type NextPage } from "next";
-// import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 
-// import { api } from "../utils/api";
-
 const Home: NextPage = () => {
+  const { data: sessionData, status: sessionStatus } = useSession();
+
   return (
     <>
       <Head>
@@ -15,8 +15,16 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1>Main</h1>
+      <main className="flex min-h-screen select-none flex-col items-center justify-center bg-slate-800 text-white">
+        <h1 className="text-2xl">
+          This page is being used for testing purposes...
+        </h1>
+        {sessionStatus === "authenticated" ? (
+          <p className="mt-3 font-semibold">
+            Your name is {sessionData.user?.name} and your email is{" "}
+            {sessionData.user?.email}...
+          </p>
+        ) : null}
       </main>
     </>
   );
@@ -39,8 +47,10 @@ export default Home;
 //         {secretMessage && <span> - {secretMessage}</span>}
 //       </p>
 //       <button
-//         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-//         onClick={sessionData ? () => void signOut() : () => void signIn()}
+//         className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+//         onClick={
+//           sessionData ? () => void signOut() : () => void signIn("google")
+//         }
 //       >
 //         {sessionData ? "Sign out" : "Sign in"}
 //       </button>
