@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   const { data: sessionData, status: sessionStatus } = useSession();
@@ -20,10 +21,19 @@ const Home: NextPage = () => {
           This page is being used for testing purposes...
         </h1>
         {sessionStatus === "authenticated" ? (
-          <p className="mt-3 font-semibold">
-            Your name is {sessionData.user?.name} and your email is{" "}
-            {sessionData.user?.email}...
-          </p>
+          <>
+            <p className="mt-3 font-semibold">
+              Your name is {sessionData.user?.name} and your email is{" "}
+              {sessionData.user?.email}...
+            </p>
+            <Image
+              className="mt-5 rounded-full"
+              src={sessionData.user?.image}
+              alt={`${sessionData.user?.name} profile picture`}
+              width="100"
+              height="100"
+            />
+          </>
         ) : null}
       </main>
     </>

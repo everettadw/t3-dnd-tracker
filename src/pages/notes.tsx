@@ -128,7 +128,9 @@ const NotesPage: NextPage = () => {
         ) : sessionStatus === "loading" ? (
           <p>Loading...</p>
         ) : (
-          <p>Unauthorized...</p>
+          <p className="pt-5 text-xl">
+            Please log in if you would like to see or make notes...
+          </p>
         )}
       </div>
     </main>
