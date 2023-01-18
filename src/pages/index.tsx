@@ -28,8 +28,8 @@ const Home: NextPage = () => {
             </p>
             <Image
               className="mt-5 rounded-full"
-              src={sessionData.user?.image}
-              alt={`${sessionData.user?.name} profile picture`}
+              src={sessionData.user?.image as string}
+              alt={`${sessionData.user?.name as string} profile picture`}
               width="100"
               height="100"
             />

@@ -125,9 +125,7 @@ const NotesPage: NextPage = () => {
               />
             </form>
           </div>
-        ) : sessionStatus === "loading" ? (
-          <p>Loading...</p>
-        ) : (
+        ) : sessionStatus === "loading" ? null : (
           <p className="pt-5 text-xl">
             Please log in if you would like to see or make notes...
           </p>
