@@ -2,6 +2,39 @@ import Link from "next/link";
 
 import { signIn, signOut, useSession } from "next-auth/react";
 
+const AuthenticatedLinks = () => {
+  return (
+    <>
+      <Link href="/notes" />
+      <Link
+        href=""
+        onClick={(e) => {
+          e.preventDefault();
+          signOut().catch(console.log);
+        }}
+      >
+        Sign Out
+      </Link>
+    </>
+  );
+};
+
+const UnauthenticatedLinks = () => {
+  return (
+    <>
+      <Link
+        href=""
+        onClick={(e) => {
+          e.preventDefault();
+          signIn("google").catch(console.log);
+        }}
+      >
+        Sign In
+      </Link>
+    </>
+  );
+};
+
 const Navbar = () => {
   const { status: sessionStatus } = useSession();
 
@@ -11,31 +44,11 @@ const Navbar = () => {
         <h1 className="text-4xl font-bold">D&amp;D T3 Tracker</h1>
         <div className="flex flex-row gap-5">
           <Link href="/">Home</Link>
-          {sessionStatus === "authenticated" ? (
-            <>
-              <Link href="/notes">Notes</Link>
-              <Link
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  signOut().catch(console.log);
-                }}
-              >
-                Sign Out
-              </Link>
-            </>
-          ) : sessionStatus === "loading" ? null : (
-            <>
-              <Link
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  signIn("google").catch(console.log);
-                }}
-              >
-                Sign In
-              </Link>
-            </>
+          {sessionStatus === "loading" ? null : sessionStatus ===
+            "authenticated" ? (
+            <AuthenticatedLinks />
+          ) : (
+            <UnauthenticatedLinks />
           )}
         </div>
       </div>
