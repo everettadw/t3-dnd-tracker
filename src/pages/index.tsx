@@ -1,46 +1,25 @@
-import { type NextPage } from "next";
-import { useSession } from "next-auth/react";
+import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 
-const Home: NextPage = () => {
-  const { data: sessionData, status: sessionStatus } = useSession();
-
+const HomePage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>T3 D&D Tracker</title>
+        <title>D&D Helper - 5e Digital Toolset</title>
         <meta
           name="description"
-          content="A D&D tracker for my small group of buddies."
+          content="An unofficial digital toolset for Dungeons & Dragons 5e."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="favicon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen select-none flex-col items-center justify-center bg-slate-800 text-white">
-        <h1 className="text-2xl">
-          This page is being used for testing purposes...
-        </h1>
-        {sessionStatus === "authenticated" ? (
-          <>
-            <p className="mt-3 font-semibold">
-              Your name is {sessionData.user?.name} and your email is{" "}
-              {sessionData.user?.email}...
-            </p>
-            <Image
-              className="mt-5 rounded-full"
-              src={sessionData.user?.image as string}
-              alt={`${sessionData.user?.name as string} profile picture`}
-              width="100"
-              height="100"
-            />
-          </>
-        ) : null}
+      <main className="flex min-h-screen flex-col items-center justify-center">
+        <h1 className="text-2xl">This is the home page. You should sign up.</h1>
       </main>
     </>
   );
 };
 
-export default Home;
+export default HomePage;
 
 // const AuthShowcase: React.FC = () => {
 //   const { data: sessionData } = useSession();
