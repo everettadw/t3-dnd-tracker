@@ -13,7 +13,7 @@ const HomePage: NextPage = () => {
         <link rel="favicon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
-        <h1 className="text-2xl">This is the home page. You should sign up.</h1>
+        <h1 className="text-2xl">This is the home page. You should log in.</h1>
       </main>
     </>
   );

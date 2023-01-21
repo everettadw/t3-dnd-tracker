@@ -13,3 +13,25 @@ body {
   position: relative;
   left: -4px;
 }
+
+.custom-link {
+  position: relative;
+}
+.custom-link:hover::after {
+  left: 0%;
+  width: 100%;
+  opacity: 1;
+}
+.custom-link::after {
+  @apply absolute bg-black;
+
+  content: "";
+  bottom: -1px;
+  height: 2px;
+  transition: left 0.2s ease, opacity 0.2s ease, width 0.2s ease;
+  width: 0%;
+  opacity: 0;
+}
+.custom-link::after {
+  right: 0%;
+}
