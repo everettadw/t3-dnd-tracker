@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-300;
+  @apply bg-slate-200;
 }
 
 .avatar-dropdown-fix {
@@ -34,4 +34,13 @@ body {
 }
 .custom-link::after {
   right: 0%;
+}
+
+.home-screen-card {
+  @apply flex h-96 w-full cursor-pointer flex-col items-center justify-center rounded-md bg-black shadow-md shadow-slate-700 transition hover:scale-105;
+}
+.game-rules-home-screen-card {
+  background-image: url("../../public/game-rules.jpg");
+  background-size: cover;
+  background-position: center center;
 }
